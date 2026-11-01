@@ -89,7 +89,7 @@ sudo ./scripts/zzu-config-setup.sh
 | 运营商后缀 | `1` 无后缀 / `2` cmcc 移动 / `3` unicom 联通 / `4` telecom 电信 / `5` zzuplan 校园套餐 |
 | 认证服务器地址 | 回车用默认 `172.16.4.14` |
 | SSID | 回车用默认 `ZZU-WLAN`（程序不主动连 WiFi，仅作记录） |
-| 检查间隔秒数 | 回车默认 `30`，允许 5–3600 |
+| 检查间隔秒数 | 回车默认 `60`，允许 5–3600 |
 
 生成 `/etc/zzu-wifi-login/config`（权限 `640`，目录 `700`）：
 
@@ -99,7 +99,7 @@ account=202600000001
 carrier=cmcc
 portal=172.16.4.14
 ssid=ZZU-WLAN
-interval_secs=30
+interval_secs=60
 ```
 
 字段含义：
@@ -108,7 +108,7 @@ interval_secs=30
 - `carrier`：运营商后缀，留空表示校园网直连；登录时拼成 `学号@后缀`
 - `portal`：认证服务器 IP，默认 `172.16.4.14`
 - `ssid`：只作记录，代码默认 `ZZU-WLAN`
-- `interval_secs`：轮询间隔；代码内默认 60，脚本写入 30
+- `interval_secs`：轮询间隔，代码与脚本默认都是 60 秒；太短会给认证服务器压力，不建议低于 30
 
 重复运行会先打印旧配置并确认，确认后把旧文件改名为 `config.bak.<时间戳>` 再重写。改完配置要重启服务。
 
@@ -173,7 +173,7 @@ account  = 202600000001
 carrier  = cmcc
 portal   = 172.16.4.14
 ssid     = ZZU-WLAN
-interval = 30 秒
+interval = 60 秒
 iface    = wlan0
 src      = 10.62.13.77
 mac      = aabbccddeeff

@@ -16,7 +16,7 @@ CONFIG_FILE="${ZZU_CONFIG_FILE:-$CONFIG_DIR/config}"
 
 DEFAULT_PORTAL="172.16.4.14"
 DEFAULT_SSID="ZZU-WLAN"
-DEFAULT_INTERVAL="30"
+DEFAULT_INTERVAL="60"
 
 say() { printf '%s\n' "$*"; }
 err() { printf '错误: %s\n' "$*" >&2; }
