@@ -1,0 +1,17 @@
+[Unit]
+Description=ZZU campus WiFi auto login
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStart=/opt/zzu_wifi_login/zzu_wifi_login
+LoadCredentialEncrypted=zzu-pass:/etc/credstore.encrypted/zzu-pass.cred
+Restart=on-failure
+RestartSec=30
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target
